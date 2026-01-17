@@ -1,0 +1,124 @@
+/* ===================== COLOR VARIABLES ===================== */
+:root {
+    --bg: #0f172a;
+    --card: #020617;
+    --primary: #22c55e;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --danger: #ef4444;
+}
+
+/* ===================== MAIN-BASE STYLES ===================== */
+* { box-sizing: border-box; font-family: system-ui, sans-serif; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container { width: 100%; max-width: 700px; padding: 16px; }
+
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: slideUp 0.4s ease;
+}
+
+h1,h2 { text-align: center; margin-bottom: 10px; }
+p { text-align: center; color: var(--muted); font-size: 0.95rem; }
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--primary);
+    color: #022c22;
+    transition: transform 0.1s ease;
+}
+
+button:active { transform: scale(0.97); }
+.hidden { display: none; }
+.danger-btn { background: var(--danger); }
+
+/* ===================== ONBOARDING PAGE & CARDS ===================== */
+.icon { font-size: 3rem; text-align: center; margin-bottom: 10px; animation: pulse 2s infinite; }
+.clm-options { display: flex; gap: 10px; margin-top: 10px; }
+.clm {
+    flex: 1;
+    background: var(--card);
+    border: 2px solid #1e293b;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.clm.active { border-color: var(--primary); transform: scale(1.05); }
+
+/* ===================== INPUTS & SELECTS STYLES ===================== */
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 12px;
+    background: var(--card);
+    color: var(--text);
+}
+
+/* =====================THE APP LAYOUT ===================== */
+.app-wrapper { display: flex; gap: 16px; }
+.history-tab {
+    width: 160px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    }
+.history-tab h3 { text-align: center; margin-bottom: 10px; }
+.history-item {
+    border-bottom: 1px solid #1e293b;
+    padding: 6px 0;
+    font-size: 0.8rem;
+    }
+.history-item:last-child { border-bottom: none; }
+.focus-content { flex: 1; }
+
+/* ===================== TIMER DISPLAY ===================== */
+.timer { text-align: center; font-size: 3rem; margin: 20px 0; }
+.debt { text-align: center; font-size: 0.85rem; color: var(--muted); }
+
+/* ===================== STREAK TRACKER STYLING ===================== */
+.streak { margin: 12px 0; }
+.progress-bar {
+    width: 100%;
+    background: #1e293b;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 6px;
+    height: 12px;
+}
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+.progress-text { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 4px; }
+
+/* ===================== ANIMATIONS (This can be changed if needed but for now this is what it looks like)===================== */
+@keyframes slideUp { from { transform: translateY(20px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+@keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.08);} 100%{transform:scale(1);} }

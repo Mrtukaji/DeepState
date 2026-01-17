@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>DeepState</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===================== THE ONBOARDING Card ===================== -->
+    <div id="onboarding">
+
+        <!-- First Card -->
+        <div class="card" id="screen1">
+            <div class="icon">🧠</div>
+            <h2>Welcome to DeepState</h2>
+            <p>Protect your attention.<br>One session at a time.</p>
+            <button onclick="nextScreen(2)">Continue</button>
+        </div>
+
+        <!-- Second Card -->
+        <div class="card hidden" id="screen2">
+            <h2>Cognitive Load Mode</h2>
+            <p>Not all tasks need the same mental energy.</p>
+            <div class="clm-options">
+                <div class="clm active" onclick="selectCLM(this)">Light</div>
+                <div class="clm" onclick="selectCLM(this)">Medium</div>
+                <div class="clm" onclick="selectCLM(this)">Heavy</div>
+            </div>
+            <button onclick="nextScreen(3)">Got it</button>
+        </div>
+
+        <!-- Third Card -->
+        <div class="card hidden" id="screen3">
+            <h2>Focus Debt</h2>
+            <p>If you abandon focus, the cost carries forward.</p>
+            <div class="icon">⏳</div>
+            <button onclick="finishOnboarding()">Start Focusing</button>
+        </div>
+
+    </div>
+
+    <!-- ===================== MAIN PAGE===================== -->
+    <div id="app" class="hidden">
+        <div class="app-wrapper">
+
+        <!-- --------------------- HISTORY TAB (should be on left) --------------------- -->
+        <div class="history-tab">
+            <h3>History</h3>
+            <div id="historyList"></div>
+    </div>
+
+    <div class="focus-content card">
+        <h1>DeepState</h1>
+        <p id="greeting">Ready to focus?</p>
+
+        <!-- Where you input the Task -->
+        <input id="taskInput" placeholder="What are you working on?" />
+
+        <!-- Focus Mode Selector -->
+            <select id="clmSelect">
+            <option value="light">Light (25 min)</option>
+            <option value="medium">Medium (45 min)</option>
+            <option value="heavy">Heavy (90 min)</option>
+            </select>
+
+        <!-- Timer -->
+        <div class="timer" id="timerDisplay">00:00</div>
+
+        <!-- Streak Tracker and Daily Goal -->
+        <div class="streak">
+            <div>🔥 <span id="streakCount">0</span>-day streak!</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="dailyProgress"></div>
+            </div>
+            <div class="progress-text">
+                <span id="todayFocus">0</span> / <span id="dailyGoal">60</span> min today
+            </div>
+        </div>
+
+        <button id="startBtn">Start Focus</button>
+        <button id="stopBtn" class="hidden danger-btn">Abandon Session</button>
+
+        <!-- Focus Debt -->
+        <div class="debt" id="debtDisplay">Focus Debt: 0 min</div>
+
+        <!-- Reset App Button (just incase the user doesnt like their progress, this can still be removed if needed) -->
+        <button onclick="resetApp()" class="danger-btn" style="margin-top:8px; font-size:0.9rem;">Reset App</button>
+    </div>
+
+    </div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
